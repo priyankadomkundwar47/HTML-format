@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Registration Form</title>
+</head>
+<body>
+<h1>Registration Form</h1>
+<form onsubmit="return validateform()">
+<label>Full Name:</label><br>
+<input type="text" id="name"><br><br>
+
+<label>Email:</label><br>
+<input type="email" id="email"><br><br>
+<label>Password:</label><br>
+<input type="password" id="password"><br><br>
+<label>Phone Number:</label><br>
+<input type="text" id="phone"><br><br>
+<input type="submit" value="submit">
+<input type="reset" value="reset">
+</form>
+
+<script>
+function validateform(){
+let name = document.getElementById("name").value.trim();
+let email = document.getElementById("email").value.trim();
+let password = document.getElementById("password").value.trim();
+let phone = document.getElementById("phone").value.trim();
+
+
+if(name == ""){
+alert("please enter your name.");
+return false;
+}
+
+let emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if(!emailpattern.test(email)) {
+alert("please enter valid email address.");
+return false;
+}
+
+let phonepattern = /^[0-9]{10}$/;
+if (!phonepattern.test(phone)) {
+alert("phone number must be 10 digits.");
+return false;
+}
+
+if(password.length < 6){
+alert("password must be at least 6 charachter long.");
+return false;
+}
+
+alert("student registration successful!");
+return true;
+}
+
+</script>
+</body>
+</html>
